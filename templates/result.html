@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Результат обработки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Результат обработки изображения</h1>
+
+        <div class="image-comparison">
+            <div class="image-box">
+                <h3>Исходное изображение</h3>
+                <img src="{{ url_for('uploaded_file', filename=original.split('/')[-1]) }}" alt="Original">
+                <h4>Гистограмма цветов</h4>
+                <img src="{{ url_for('plot_file', filename=orig_hist.split('/')[-1]) }}" alt="Original Histogram">
+            </div>
+
+            <div class="image-box">
+                <h3>Повернутое изображение</h3>
+                <img src="{{ url_for('processed_file', filename=processed.split('/')[-1]) }}" alt="Processed">
+                <h4>Гистограмма цветов</h4>
+                <img src="{{ url_for('plot_file', filename=rotated_hist.split('/')[-1]) }}" alt="Rotated Histogram">
+            </div>
+        </div>
+
+        <a href="{{ url_for('index') }}" class="btn">Обработать другое изображение</a>
+    </div>
+</body>
+</html>
